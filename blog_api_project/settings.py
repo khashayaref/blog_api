@@ -52,6 +52,7 @@ INSTALLED_APPS = [
     'allauth.account',
     'allauth.socialaccount',
     'dj_rest_auth.registration',
+    'drf_spectacular',
 ]
 
 MIDDLEWARE = [
@@ -149,6 +150,7 @@ REST_FRAMEWORK = {
         'rest_framework.authentication.SessionAuthentication',
         'rest_framework.authentication.TokenAuthentication',
     ],
+    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
 }
 
 CORS_ORIGIN_WHITELIST = [
@@ -161,3 +163,11 @@ CSRF_TRUSTED_ORIGINS = ['http://localhost:3000'] # new: to allow front-end libra
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend' # new: for showing email in console
 
 SITE_ID = 1 # new
+
+SPECTACULAR_SETTINGS = {
+    'TITLE': 'Blog API Project',
+    'DESCRIPTION': 'Writing Sample APIs for DRF',
+    'VERSION': '1.0.0',
+    'SERVE_INCLUDE_SCHEMA': False,
+    # OTHER SETTINGS
+}
